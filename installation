@@ -1,0 +1,44 @@
+apt install docker.io -y #in both node and master
+systemctl enable docker
+systemctk start docker
+
+install kubeadm in both master and node
+
+sudo apt-get update
+# If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
+# sudo mkdir -p -m 755 /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+
+sudo systemctl enable --now kubelet
+
+# only in master 
+#copy and run the commands
+#copy the token and paste in node#
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/custom-resources.yaml
+watch kubectl get pods -n calico-system
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+kubectl get nodes -o wide
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# install calico copy and paste in only master
+
+
+
