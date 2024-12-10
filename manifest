@@ -1,0 +1,18 @@
+apiVersion: app/vi
+kind: Deploment
+metadata:
+     name: any name 
+spec: 
+   replica: 2
+   selector:
+     match labels:
+        name:vam
+   templete:
+     metadata:
+       name: name of the pod
+       labels:
+         name:vam
+     spec: 
+       containers:
+       - name: name of container
+         image: image name
