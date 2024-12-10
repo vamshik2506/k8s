@@ -1,4 +1,4 @@
-apiVersion: app/vi
+apiVersion: apps/vi
 kind: Deploment
 metadata:
      name: any name 
