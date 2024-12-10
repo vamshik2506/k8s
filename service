@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: apiserver-service
-  labels:
-    name: vam
+  name: mydep-service
 spec:
   selector:
     name: vam
   ports:
-  - port: port no
-    targetPort: port no
-  type: NodePort
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
